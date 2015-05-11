@@ -6,7 +6,7 @@ import {contains as getCharType} from './charCodeHelper'
  * @param caseInsensitive {Boolean} is case insensitive
  */
 
-export function naturalSort(list, caseInsensitive, order = 'DESC') {
+export function naturalSort(list, caseInsensitive = true, order = 'DESC') {
 	var desc = order.toUpperCase() === 'DESC'
 
 	list.forEach((item, i) => list[i] = splitByCharType(item))
@@ -63,8 +63,6 @@ function sort(a, b, caseInsensitive, desc) {
 
 	for (var i = 0; i < len; i += 1) {
 		var [itemA, itemB] = [a[i], b[i]]
-
-		if (!itemA || !itemB) break
 
 		if (caseInsensitive) {
 			itemA = itemA.toLowerCase()

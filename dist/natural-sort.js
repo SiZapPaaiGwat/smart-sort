@@ -20,7 +20,8 @@
 		return code === CHAR_CODE_POINT || code >= CHAR_CODE_ZERO && code <= CHAR_CODE_NINE;
 	}
 
-	function naturalSort(list, caseInsensitive) {
+	function naturalSort(list) {
+		var caseInsensitive = arguments[1] === undefined ? true : arguments[1];
 		var order = arguments[2] === undefined ? 'DESC' : arguments[2];
 
 		var desc = order.toUpperCase() === 'DESC';
@@ -85,8 +86,6 @@
 		for (var i = 0; i < len; i += 1) {
 			var itemA = a[i];
 			var itemB = b[i];
-
-			if (!itemA || !itemB) break;
 
 			if (caseInsensitive) {
 				itemA = itemA.toLowerCase();
