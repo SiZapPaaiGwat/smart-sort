@@ -1,0 +1,19 @@
+{
+	"name": "smart-sort",
+	"version": "0.0.1",
+	"main": "dist/smart-sort.js",
+	"description": "sort string in a smart way",
+	"license": "MIT",
+	"repository": "simongfxu/smart-sort",
+	"keywords": [
+		"sort"
+	],
+	"devDependencies": {
+		"gulp": "^3.8.8",
+		"gulp-babel": "^5.0.0",
+		"gulp-esperanto": "simongfxu/gulp-esperanto",
+		"gulp-jshint": "^1.9.4",
+		"gulp-rename": "^1.2.0",
+		"gulp-uglify": "^1.1.0"
+	}
+}
