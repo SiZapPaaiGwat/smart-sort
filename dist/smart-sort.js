@@ -1,5 +1,5 @@
 (function (global, factory) {
-	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) : typeof define === 'function' && define.amd ? define('naturalSort', ['exports'], factory) : factory(global.naturalSort = {});
+	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) : typeof define === 'function' && define.amd ? define('SmartSort', ['exports'], factory) : factory(global.SmartSort = {});
 })(this, function (exports) {
 	'use strict';
 
@@ -39,6 +39,26 @@
 		});
 
 		return list;
+	}
+
+	function naturalSortBy(list, field) {
+		var caseInsensitive = arguments[2] === undefined ? true : arguments[2];
+		var order = arguments[3] === undefined ? 'DESC' : arguments[3];
+
+		var map = {},
+		    keys = [];
+		list.forEach(function (item, i) {
+			// TODO 目前各field的值必须唯一
+			var key = item[field];
+			map[key] = i;
+			keys.push(key);
+		});
+
+		naturalSort(keys, caseInsensitive, order);
+
+		return keys.map(function (key) {
+			return list[map[key]];
+		});
 	}
 
 	/**
@@ -108,4 +128,5 @@
 	}
 
 	exports.naturalSort = naturalSort;
+	exports.naturalSortBy = naturalSortBy;
 });

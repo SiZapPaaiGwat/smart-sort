@@ -5,7 +5,7 @@ var jshint = require('gulp-jshint')
 var esperanto = require('gulp-esperanto')
 var babel = require('gulp-babel')
 
-var sourceFile = 'dist/natural-sort.js'
+var sourceFile = 'dist/smart-sort.js'
 
 var bundleConfig = {
     // 是否进行打包，其它配置都是esperanto的配置
@@ -13,8 +13,8 @@ var bundleConfig = {
     type: 'umd',
     base: 'src',
     entry: 'index.js',
-    name: 'naturalSort',
-    amdName: 'naturalSort',
+    name: 'SmartSort',
+    amdName: 'SmartSort',
     strict: true
 }
 
@@ -35,7 +35,7 @@ gulp.task('uglify', ['bundle'], function() {
     return gulp.src(sourceFile)
       .pipe(uglify())
       .pipe(rename(function(path) {
-        path.basename = 'natural-sort.min'
+        path.basename = 'smart-sort.min'
       }))
       .pipe(gulp.dest('dist'))
 })

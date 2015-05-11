@@ -18,6 +18,20 @@ export function naturalSort(list, caseInsensitive = true, order = 'DESC') {
 	return list
 }
 
+export function naturalSortBy(list, field, caseInsensitive = true, order = 'DESC') {
+	var map = {}, keys = []
+	list.forEach(function(item, i) {
+		// TODO 目前各field的值必须唯一
+		var key = item[field]
+		map[key] = i
+		keys.push(key)
+	})
+
+	naturalSort(keys, caseInsensitive, order)
+
+	return keys.map((key) => list[map[key]])
+}
+
 /**
  * convert string to array by its type
  * such as : 'a10b20' to ['a', '10', 'b', '20']
