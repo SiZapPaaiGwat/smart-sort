@@ -13,6 +13,8 @@
     "boss"     : true,
     "esnext"   : true,
     "predef"  : [
-        "define"
+        "define",
+		"describe",
+		"it"
     ]
 }

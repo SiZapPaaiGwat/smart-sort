@@ -18,18 +18,69 @@ export function naturalSort(list, caseInsensitive = true, order = 'DESC') {
 	return list
 }
 
+/**
+ * sort Array<Object> by a specified field
+ * @param list {Array<JSONObject>}
+ * @param field {String}
+ * @param caseInsensitive
+ * @param order
+ * @returns {Array}
+ */
 export function naturalSortBy(list, field, caseInsensitive = true, order = 'DESC') {
-	var map = {}, keys = []
+	/**
+	 * store array item's original index
+	 * if field value is existed
+	 * map value is an array
+	 */
+	var map = {}
+	/**
+	 * store all field values and sort them
+	 * keep every field is unique
+	 */
+	var keys = []
+
 	list.forEach(function(item, i) {
-		// TODO 目前各field的值必须唯一
 		var key = item[field]
-		map[key] = i
-		keys.push(key)
+
+		if (Array.isArray(map[key])) {
+			map[key].push(i)
+		} else {
+			if (map.hasOwnProperty(key)) {
+				map[key] = [map[key], i]
+			} else {
+				map[key] = i
+			}
+		}
+
+		if (keys.indexOf(key) === -1){
+			keys.push(key)
+		}
 	})
 
 	naturalSort(keys, caseInsensitive, order)
 
-	return keys.map((key) => list[map[key]])
+	var ret = new Array(list.length)
+	var index = 0
+
+	/**
+	 * rearrange the return list
+	 */
+	keys.forEach(function(key) {
+		var originalIndex = map[key]
+		if (Array.isArray(originalIndex)) {
+			originalIndex.forEach(function(i) {
+				ret[index] = list[i]
+
+				index += 1
+			})
+		} else {
+			ret[index] = list[originalIndex]
+
+			index += 1
+		}
+	})
+
+	return ret
 }
 
 /**
@@ -72,6 +123,7 @@ function splitByCharType(str) {
  * @returns {number}
  */
 function sort(a, b, caseInsensitive, desc) {
+	// if the length is not identical, no need to compare every char
 	var len = Math.min(a.length, b.length)
 	var factor = desc ? -1 : 1
 
@@ -84,6 +136,10 @@ function sort(a, b, caseInsensitive, desc) {
 		}
 
 		if (itemA !== itemB) {
+			/**
+			 * try number it and compare by value
+			 * if not a number then compare its char code
+			 */
 			var [valueA, valueB] = [Number(itemA), Number(itemB)]
 
 			if (valueA == itemA && valueB == itemB) {

@@ -1,6 +1,6 @@
-# natural-sort
+# smart-sort
 
-sort Array<string> in a natural way
+sort Array in a natural way
 
 ## Native sort
 
@@ -10,6 +10,16 @@ sort Array<string> in a natural way
 ```
 
 Generally, we want ['a1', 'a2', 'a11'].And this is what our library will do it for you.
+
+## API
+
+### SmartSort.naturalSort(list, [caseInsensitive = true], [order = 'desc'])
+
+sort Array<String>
+
+### SmartSort.naturalSortBy(list, field, [caseInsensitive = true], [order = 'desc'])
+
+sort Array<Object>
 
 ## Module support
 

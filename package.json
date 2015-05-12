@@ -1,7 +1,7 @@
 {
 	"name": "smart-sort",
 	"version": "0.0.1",
-	"main": "dist/smart-sort.js",
+	"main": "src/index.js",
 	"description": "sort string in a smart way",
 	"license": "MIT",
 	"repository": "simongfxu/smart-sort",
@@ -15,5 +15,8 @@
 		"gulp-jshint": "^1.9.4",
 		"gulp-rename": "^1.2.0",
 		"gulp-uglify": "^1.1.0"
+	},
+	"scripts": {
+		"test": "mocha --harmony"
 	}
 }
