@@ -15,18 +15,18 @@ Generally, we want ['a1', 'a2', 'a11'].And this is what our library will do it f
 
 ### SmartSort.naturalSort(list, [caseInsensitive = true], [order = 'desc'])
 
-sort Array<String>
+sort Array<String>, **the original list will be affected**
 
 ### SmartSort.naturalSortBy(list, field, [caseInsensitive = true], [order = 'desc'])
 
-sort Array<Object>
+sort Array<Object>, **the original list will not be affected**.use the return list
 
 ## Module support
 
-AMD/CommonJS/UMD
+AMD / CommonJS / UMD
 
 ## IE Support
 
-IE9+.
+IE9+ / NodeJS
 
-IE8 need `es5-shim`
+**IE < 9 brwoser needs `es5-shim`**
