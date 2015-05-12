@@ -10,10 +10,10 @@
 	var CHAR_CODE_POINT = '.'.charCodeAt(0);
 
 	/**
-  * check if the char is [.0-9]
-  * @param char {String}
-  * @returns {boolean}
-  */
+	 * check if the char is [.0-9]
+	 * @param char {String}
+	 * @returns {boolean}
+	 */
 	function charCodeHelper__contains(char) {
 		var code = char && char.charCodeAt(0);
 
@@ -42,27 +42,27 @@
 	}
 
 	/**
-  * sort Array<Object> by a specified field
-  * @param list {Array<JSONObject>}
-  * @param field {String}
-  * @param caseInsensitive
-  * @param order
-  * @returns {Array}
-  */
+	 * sort Array<Object> by a specified field
+	 * @param list {Array<JSONObject>}
+	 * @param field {String}
+	 * @param caseInsensitive
+	 * @param order
+	 * @returns {Array}
+	 */
 	function naturalSortBy(list, field) {
 		var caseInsensitive = arguments[2] === undefined ? true : arguments[2];
 		var order = arguments[3] === undefined ? 'DESC' : arguments[3];
 
 		/**
-   * store array item's original index
-   * if field value is existed
-   * map value is an array
-   */
+		 * store array item's original index
+		 * if field value is existed
+		 * map value is an array
+		 */
 		var map = {};
 		/**
-   * store all field values and sort them
-   * keep every field is unique
-   */
+		 * store all field values and sort them
+		 * keep every field is unique
+		 */
 		var keys = [];
 
 		list.forEach(function (item, i) {
@@ -89,8 +89,8 @@
 		var index = 0;
 
 		/**
-   * rearrange the return list
-   */
+		 * rearrange the return list
+		 */
 		keys.forEach(function (key) {
 			var originalIndex = map[key];
 			if (Array.isArray(originalIndex)) {
@@ -110,11 +110,11 @@
 	}
 
 	/**
-  * convert string to array by its type
-  * such as : 'a10b20' to ['a', '10', 'b', '20']
-  * @param str {String}
-  * @return {Array}
-  */
+	 * convert string to array by its type
+	 * such as : 'a10b20' to ['a', '10', 'b', '20']
+	 * @param str {String}
+	 * @return {Array}
+	 */
 	function splitByCharType(str) {
 		if (typeof str !== 'string') str = String(str);
 
@@ -140,13 +140,13 @@
 	}
 
 	/**
-  * sort the transformed array
-  * @param a {Array}
-  * @param b {Array}
-  * @param caseInsensitive
-  * @param desc
-  * @returns {number}
-  */
+	 * sort the transformed array
+	 * @param a {Array}
+	 * @param b {Array}
+	 * @param caseInsensitive
+	 * @param desc
+	 * @returns {number}
+	 */
 	function sort(a, b, caseInsensitive, desc) {
 		// if the length is not identical, no need to compare every char
 		var len = Math.min(a.length, b.length);
@@ -163,9 +163,9 @@
 
 			if (itemA !== itemB) {
 				/**
-     * try number it and compare by value
-     * if not a number then compare its char code
-     */
+				 * try number it and compare by value
+				 * if not a number then compare its char code
+				 */
 				var valueA = Number(itemA);
 				var valueB = Number(itemB);
 
