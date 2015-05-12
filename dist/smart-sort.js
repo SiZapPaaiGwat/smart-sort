@@ -42,7 +42,7 @@
 	}
 
 	/**
-  *
+  * sort Array<Object> by a specified field
   * @param list {Array<JSONObject>}
   * @param field {String}
   * @param caseInsensitive
